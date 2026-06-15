@@ -33,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <head>
+        <meta name="monetag" content="19d17d38a8688b2fef16668c8a642bc6" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
