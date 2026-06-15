@@ -34,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="ba4L_TA6pYg5hd0p5Z6R_tCbrORyuZovoMevBc4Um8k" />
+        <meta name="google-site-verification" content="google24d069add37978b6" />
         <meta name="monetag" content="19d17d38a8688b2fef16668c8a642bc6" />
         <script src="https://quge5.com/88/tag.min.js" data-zone="249982" async data-cfasync="false" />
         <script
