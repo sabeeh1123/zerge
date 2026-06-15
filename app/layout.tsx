@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: 'Zerge Discover - Premium Movies & Podcasts recommendation Engine',
   description: 'The ultimate tech-forward entertainment recommendation hub, featuring curated reviews of movies and podcasts, generated dynamically via Gemini.',
   verification: {
-    google: 'd7SpZcfEj8Z1yH5BVXX-d-bykVqabX3MCEf961LVjHw',
+    google: 'ba4L_TA6pYg5hd0p5Z6R_tCbrORyuZovoMevBc4Um8k',
   },
 };
 
@@ -33,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="ba4L_TA6pYg5hd0p5Z6R_tCbrORyuZovoMevBc4Um8k" />
         <meta name="monetag" content="19d17d38a8688b2fef16668c8a642bc6" />
         <script src="https://quge5.com/88/tag.min.js" data-zone="249987" async data-cfasync="false" />
         <script
