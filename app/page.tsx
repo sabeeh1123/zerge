@@ -81,22 +81,61 @@ const DEFAULT_COMMENTS: Comment[] = [
 
 // Reusable Google AdSense unit component
 function AdSenseUnit() {
+  const insRef = useRef<HTMLModElement | null>(null);
+
   useEffect(() => {
-    try {
-      // Check if there is an active adsbygoogle container that hasn't been processed yet.
-      // This prevents the duplicate execution error in React's development/strict mode.
-      const unprocessed = document.querySelectorAll('ins.adsbygoogle:not([data-adsbygoogle-status])');
-      if (unprocessed.length > 0) {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+    if (typeof window === "undefined" || !insRef.current) return;
+
+    let observer: ResizeObserver | null = null;
+    let pushCalled = false;
+
+    const tryPush = () => {
+      if (pushCalled) return;
+      if (insRef.current && insRef.current.offsetWidth > 0) {
+        // Double check not already processed by AdSense
+        if (!insRef.current.hasAttribute('data-adsbygoogle-status')) {
+          try {
+            ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+            pushCalled = true;
+          } catch (err) {
+            console.warn("AdSense soft error: ", err);
+          }
+        } else {
+          pushCalled = true;
+        }
       }
-    } catch (err) {
-      console.error("AdSense boundary catch: ", err);
+    };
+
+    if (insRef.current.offsetWidth > 0) {
+      tryPush();
+    } else {
+      // Set up ResizeObserver to wait until container expands and has a layout size
+      if (typeof ResizeObserver !== "undefined") {
+        observer = new ResizeObserver(() => {
+          tryPush();
+          if (pushCalled && observer) {
+            observer.disconnect();
+          }
+        });
+        observer.observe(insRef.current);
+      } else {
+        // Fallback checks
+        const timeout = setTimeout(tryPush, 500);
+        return () => clearTimeout(timeout);
+      }
     }
+
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
   }, []);
 
   return (
     <div key="adsense-block" className="my-2 overflow-hidden w-full flex justify-center bg-stone-900/50 p-2 rounded border border-stone-850 min-h-[100px]">
       <ins
+        ref={insRef}
         className="adsbygoogle"
         style={{ display: "block", minWidth: "250px", width: "100%" }}
         data-ad-client="ca-pub-3725227998686442"
