@@ -31,9 +31,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
         <meta name="monetag" content="19d17d38a8688b2fef16668c8a642bc6" />
+        <script src="https://quge5.com/88/tag.min.js" data-zone="249987" async data-cfasync="false" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

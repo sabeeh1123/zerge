@@ -116,16 +116,8 @@ export default function Page() {
   const [currentFilter, setCurrentFilter] = useState<string>("all"); // 'all' | 'movie' | 'podcast'
   const [customSearchActive, setCustomSearchActive] = useState<boolean>(false);
   
-  // Lazy-load bookmarks from localStorage directly during startup
-  const [bookmarks, setBookmarks] = useState<string[]>(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("verge_bookmarks");
-      if (stored) {
-        try { return JSON.parse(stored); } catch (_) {}
-      }
-    }
-    return [];
-  });
+  // Bookmarks are loaded in useEffect to prevent SSR hydration mismatch
+  const [bookmarks, setBookmarks] = useState<string[]>([]);
 
   const [comments, setComments] = useState<Comment[]>(DEFAULT_COMMENTS);
   const [newCommentName, setNewCommentName] = useState<string>("");
@@ -136,13 +128,29 @@ export default function Page() {
   const [newsletterSubscribed, setNewsletterSubscribed] = useState<boolean>(false);
   const [newsletterEmail, setNewsletterEmail] = useState<string>("");
   
-  // Lazy-load cookie consent from localStorage
-  const [cookieConsentAccepted, setCookieConsentAccepted] = useState<boolean>(() => {
+  // Cookie consent is loaded in useEffect to prevent SSR hydration mismatch
+  const [cookieConsentAccepted, setCookieConsentAccepted] = useState<boolean>(false);
+
+  // Load localStorage safe values after hydration
+  useEffect(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("verge_cookies_accepted") === "true";
+      const stored = localStorage.getItem("verge_bookmarks");
+      const cookiesAccepted = localStorage.getItem("verge_cookies_accepted") === "true";
+      
+      // Schedule asynchronously to prevent synchronous setState within useEffect (react-hooks/set-state-in-effect rule)
+      const timer = setTimeout(() => {
+        if (stored) {
+          try {
+            setBookmarks(JSON.parse(stored));
+          } catch (_) {}
+        }
+        if (cookiesAccepted) {
+          setCookieConsentAccepted(true);
+        }
+      }, 0);
+      return () => clearTimeout(timer);
     }
-    return false;
-  });
+  }, []);
 
   const [copiedTitle, setCopiedTitle] = useState<string>("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
