@@ -1,0 +1,6 @@
+{
+  "name": "Zerge Discover",
+  "description": "A high-fidelity replica of The Zerge featuring high-authority recommendations and user reviews for movies and podcasts, curated dynamically via Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

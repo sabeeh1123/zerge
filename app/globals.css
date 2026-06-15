@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+    --font-display: var(--font-display), system-ui, -apple-system, sans-serif;
+    --font-mono: var(--font-mono), ui-monospace, monospace;
+  }
+}
+
+@theme {
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-display: var(--font-display), system-ui, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+
+  /* Custom Verge-style neon cyberpunk palette */
+  --color-verge-magenta: #e9126a;
+  --color-verge-cyan: #00f3ff;
+  --color-verge-purple: #8e2de2;
+  --color-verge-dark: #0e0e11;
+  --color-verge-card: #18181c;
+  --color-verge-border: #2c2c35;
+
+  --animate-pulse-cyan: pulse-cyan 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-border-glow: border-glow 3s linear infinite;
+  --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
+}
+
+@keyframes pulse-cyan {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.8), 0 0 20px rgba(0, 243, 255, 0.4);
+  }
+  50% {
+    opacity: .7;
+    text-shadow: 0 0 4px rgba(0, 243, 255, 0.4);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Base resets & custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e11;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c2c35;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e9126a;
+}
+
+/* Custom classes for Verge-specific card shapes and styling */
+.verge-slash {
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+
+.verge-gradient-bg {
+  background: linear-gradient(135deg, #18111c 0%, #0e0e11 100%);
+}
+
+.verge-score-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  border-radius: 9999px;
+  background-color: #0e0e11;
+  border: 4px solid #e9126a;
+  box-shadow: 0 0 15px rgba(233, 18, 106, 0.3);
+}
+
+.verge-grid-cell {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #2c2c35;
+}
+
+.verge-grid-cell::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background-color: #e9126a;
+  transition: height 0.25s ease-out;
+}
+
+.verge-grid-cell:hover::before {
+  height: 100%;
+}
+
+.verge-grid-cell:hover {
+  transform: translateY(-2px);
+  border-color: rgba(233, 18, 106, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
