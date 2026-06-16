@@ -381,16 +381,26 @@ export default function Page() {
           <div className="flex items-center space-x-4">
             <button 
               onClick={() => { setActiveTab("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              className="group text-left"
+              className="group flex items-center gap-3 text-left"
               id="brand-logo"
             >
-              <div className="flex items-baseline font-black tracking-tighter text-2xl md:text-3.5xl uppercase">
-                <span className="bg-gradient-to-r from-verge-magenta to-verge-purple bg-clip-text text-transparent">THE ZERGE</span>
-                <span className="text-white ml-2 px-1.5 py-0.5 text-xs font-mono font-black tracking-normal bg-verge-magenta transform -skew-x-12 inline-block">DISCOVER ///</span>
+              <div className="relative w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden border border-verge-magenta/60 flex-shrink-0 group-hover:border-verge-magenta transition duration-300 bg-black">
+                <img 
+                  src="/icon.jpg" 
+                  alt="The Zerge" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500" 
+                  referrerPolicy="no-referrer"
+                />
               </div>
-              <p className="text-[10px] font-mono font-medium uppercase tracking-widest text-[#00f3ff] mt-0.5 tracking-wider">
-                COGNITIVE TECH-FORWARD MEDIA COMPENDIUN
-              </p>
+              <div>
+                <div className="flex items-baseline font-black tracking-tighter text-2xl md:text-3.5xl uppercase">
+                  <span className="bg-gradient-to-r from-verge-magenta to-verge-purple bg-clip-text text-transparent">THE ZERGE</span>
+                  <span className="text-white ml-2 px-1.5 py-0.5 text-xs font-mono font-black tracking-normal bg-verge-magenta transform -skew-x-12 inline-block">DISCOVER ///</span>
+                </div>
+                <p className="text-[10px] font-mono font-medium uppercase tracking-widest text-[#00f3ff] mt-0.5 tracking-wider">
+                  COGNITIVE TECH-FORWARD MEDIA COMPENDIUN
+                </p>
+              </div>
             </button>
           </div>
 
