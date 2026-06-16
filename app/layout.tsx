@@ -39,6 +39,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script src="https://quge5.com/88/tag.min.js" data-zone="249982" async data-cfasync="false" />
         <script
           dangerouslySetInnerHTML={{
+            __html: `(function(s){s.dataset.zone='11155060',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
