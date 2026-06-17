@@ -147,6 +147,116 @@ function AdSenseUnit() {
   );
 }
 
+// Reusable Adsterra native container unit component
+function AdsterraContainerAd() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !containerRef.current) return;
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.setAttribute("data-cfasync", "false");
+    script.src = "https://pl29764956.effectivecpmnetwork.com/1d882e4bef889e1b6632326dddcff287/invoke.js";
+    
+    const timeout = setTimeout(() => {
+      document.body.appendChild(script);
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+      try {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      } catch (e) {}
+    };
+  }, []);
+
+  return (
+    <div className="w-full flex flex-col justify-center py-2">
+      <span className="text-[9px] font-mono text-stone-500 uppercase tracking-widest text-left mb-1.5 font-bold">
+        NATIVE ADSTERRA AD PLACEMENT
+      </span>
+      <div 
+        ref={containerRef} 
+        id="container-1d882e4bef889e1b6632326dddcff287" 
+        className="w-full min-h-[100px] bg-[#0e0e11] rounded-lg flex items-center justify-center p-2 border border-dashed border-stone-800"
+      />
+    </div>
+  );
+}
+
+// Reusable Adsterra standard iframe banner (468x60) unit component
+function AdsterraBannerAd() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !containerRef.current) return;
+
+    (window as any).atOptions = {
+      'key' : 'c502b9bc04726f078a925ebfb5588ccb',
+      'format' : 'iframe',
+      'height' : 60,
+      'width' : 468,
+      'params' : {}
+    };
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.highperformanceformat.com/c502b9bc04726f078a925ebfb5588ccb/invoke.js";
+
+    containerRef.current.appendChild(script);
+
+    return () => {
+      try {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      } catch (e) {}
+    };
+  }, []);
+
+  return (
+    <div className="w-full flex flex-col items-center justify-center py-4">
+      <span className="text-[9px] font-mono text-stone-500 uppercase tracking-widest mb-1.5 font-bold">SPONSOR BANNER ///</span>
+      <div 
+        ref={containerRef} 
+        className="w-full max-w-[468px] min-h-[60px] flex items-center justify-center overflow-hidden rounded bg-[#0e0e11] border border-dashed border-stone-800"
+      />
+    </div>
+  );
+}
+
+// Reusable Adsterra direct promotion banner
+function AdsterraDirectLinkAd() {
+  return (
+    <div className="bg-gradient-to-r from-stone-900 to-pink-950/20 border border-stone-850 hover:border-verge-magenta rounded-lg p-5 text-left space-y-3 transition duration-300 group relative overflow-hidden">
+      <div className="absolute right-0 bottom-0 opacity-10 text-9xl font-mono font-black select-none pointer-events-none transform translate-y-12 translate-x-4 group-hover:translate-y-9 transition-all duration-500 text-verge-magenta">
+        LINK
+      </div>
+      <div className="flex items-center space-x-2">
+        <span className="bg-[#00f3ff] text-black px-2 py-0.5 text-[9px] font-mono font-black uppercase tracking-wider rounded">SPONSOR OFFER</span>
+        <span className="text-[10px] font-mono text-stone-400">EXCLUSIVE DIRECT ACCESS ///</span>
+      </div>
+      <h4 className="font-display text-white font-black text-sm uppercase">
+        Verified Global Entertainment Channel
+      </h4>
+      <p className="text-xs text-stone-400 leading-relaxed font-sans">
+        Instantly visit high-authority partner publishing networks featuring top-tier media catalogs, critical data reviews, and fast secure streams.
+      </p>
+      <a
+        href="https://www.effectivecpmnetwork.com/qzbbqwpv34?key=4804826a910125389492db2cd73c4745"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-verge-magenta to-verge-purple hover:opacity-90 text-white font-mono text-xs font-black py-2.5 px-4 rounded transition uppercase tracking-wider shadow-lg"
+      >
+        ACCESS DIRECT NETWORK <ExternalLink className="w-3.5 h-3.5" />
+      </a>
+    </div>
+  );
+}
+
 export default function Page() {
   // App states
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
@@ -921,6 +1031,9 @@ export default function Page() {
                         </div>
                         {/* Interactive Google AdSense Unit */}
                         <AdSenseUnit />
+                        
+                        {/* Live Adsterra Native Recommendation Container Unit */}
+                        <AdsterraContainerAd />
                       </div>
                     </div>
                   </div>
@@ -966,27 +1079,11 @@ export default function Page() {
                       )}
                     </div>
 
-                    {/* MPU Dynamic Side Advert Spot (Google AdSense Policy Showcase) */}
-                    <div className="w-full border border-dashed border-stone-800 bg-[#0e0e11] rounded-lg p-5 text-left space-y-4 relative">
-                      <div className="text-[9px] font-mono text-stone-600 uppercase absolute top-2 right-3 tracking-wider">
-                        AD PLACEHOLDER (300X250)
-                      </div>
-                      <span className="text-[10px] font-mono text-stone-500 bg-stone-950 px-2 py-0.5 rounded uppercase font-bold inline-block">
-                        MONETIZABLE NATIVE UNIT
-                      </span>
-                      <h4 className="font-display text-white font-black text-sm uppercase">
-                        How We Maximize Clicks Respectfully
-                      </h4>
-                      <p className="text-xs text-stone-400 leading-relaxed font-sans">
-                        Our layout uses isolated advertisement frames separated cleanly from content tags. This maximizes user engagement and preserves AdSense criteria.
-                      </p>
-                      <div className="bg-stone-950 p-3 rounded text-[11px] font-mono text-stone-500 space-y-1.5 border border-stone-850">
-                        <span className="text-stone-300 font-bold block uppercase text-[10px]">ZERGE CODE COMPLIANCE:</span>
-                        <div className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-400" /> CSS Content Spacing Guard</div>
-                        <div className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-400" /> Explicit labeling standard</div>
-                        <div className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-400" /> Safe contrast guidelines</div>
-                      </div>
-                    </div>
+                    {/* Live Adsterra Frame Unit */}
+                    <AdsterraBannerAd />
+
+                    {/* Adsterra Direct Promo Action Widget */}
+                    <AdsterraDirectLinkAd />
 
                     {/* Quick Category tags cloud */}
                     <div className="bg-stone-900 border border-stone-850 rounded-lg p-5 text-left space-y-4">

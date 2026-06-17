@@ -43,18 +43,41 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="google-site-verification" content="ba4L_TA6pYg5hd0p5Z6R_tCbrORyuZovoMevBc4Um8k" />
         <meta name="google-site-verification" content="google24d069add37978b6" />
         <meta name="monetag" content="19d17d38a8688b2fef16668c8a642bc6" />
-        <script src="https://quge5.com/88/tag.min.js" data-zone="249982" async data-cfasync="false" />
-        <script
+        <Script
+          id="effective-cpm-1"
+          src="https://pl29764955.effectivecpmnetwork.com/e9/eb/fc/e9ebfc4cec81c26e2278b17833180c2f.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="effective-cpm-2"
+          src="https://pl29764958.effectivecpmnetwork.com/59/82/00/598200a94d4b6167abccb483d4a68df0.js"
+          strategy="afterInteractive"
+          data-cfasync="false"
+        />
+        <Script
+          id="quge-tag"
+          src="https://quge5.com/88/tag.min.js"
+          strategy="afterInteractive"
+          data-zone="249982"
+          data-cfasync="false"
+        />
+        <Script
+          id="zone-tag-1"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(s){s.dataset.zone='11155060',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`
           }}
         />
-        <script
+        <Script
+          id="zone-tag-2"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(s){s.dataset.zone='11155082',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`
           }}
         />
-        <script
+        <Script
+          id="polyfill-fetch"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
