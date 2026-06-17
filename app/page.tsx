@@ -231,28 +231,39 @@ function AdsterraBannerAd() {
 // Reusable Adsterra direct promotion banner
 function AdsterraDirectLinkAd() {
   return (
-    <div className="bg-gradient-to-r from-stone-900 to-pink-950/20 border border-stone-850 hover:border-verge-magenta rounded-lg p-5 text-left space-y-3 transition duration-300 group relative overflow-hidden">
+    <div className="bg-gradient-to-r from-stone-900 to-pink-950/20 border border-stone-850 hover:border-verge-magenta rounded-lg p-5 text-left space-y-4 transition duration-300 group relative overflow-hidden">
       <div className="absolute right-0 bottom-0 opacity-10 text-9xl font-mono font-black select-none pointer-events-none transform translate-y-12 translate-x-4 group-hover:translate-y-9 transition-all duration-500 text-verge-magenta">
-        LINK
+        CPM
       </div>
       <div className="flex items-center space-x-2">
         <span className="bg-[#00f3ff] text-black px-2 py-0.5 text-[9px] font-mono font-black uppercase tracking-wider rounded">SPONSOR OFFER</span>
         <span className="text-[10px] font-mono text-stone-400">EXCLUSIVE DIRECT ACCESS ///</span>
       </div>
       <h4 className="font-display text-white font-black text-sm uppercase">
-        Verified Global Entertainment Channel
+        Verified Global Entertainment Channels
       </h4>
       <p className="text-xs text-stone-400 leading-relaxed font-sans">
-        Instantly visit high-authority partner publishing networks featuring top-tier media catalogs, critical data reviews, and fast secure streams.
+        Instantly visit high-authority partner publishing networks featuring top-tier media catalogs, critical reviews, and fast secure streams.
       </p>
-      <a
-        href="https://www.effectivecpmnetwork.com/qzbbqwpv34?key=4804826a910125389492db2cd73c4745"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-verge-magenta to-verge-purple hover:opacity-90 text-white font-mono text-xs font-black py-2.5 px-4 rounded transition uppercase tracking-wider shadow-lg"
-      >
-        ACCESS DIRECT NETWORK <ExternalLink className="w-3.5 h-3.5" />
-      </a>
+      
+      <div className="flex flex-col gap-2 pt-1 relative z-10">
+        <a
+          href="https://www.effectivecpmnetwork.com/qzbbqwpv34?key=4804826a910125389492db2cd73c4745"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-stone-800 to-stone-700 hover:from-stone-750 hover:to-stone-650 text-white font-mono text-xs font-black py-2.5 px-4 rounded transition uppercase tracking-wider shadow"
+        >
+          CPM CHANNEL 1 <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+        <a
+          href="https://www.effectivecpmnetwork.com/f4mvdfdkwf?key=4eb36321e5078b564fd22b998fd0eab8"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-verge-magenta to-verge-purple hover:opacity-95 text-white font-mono text-xs font-black py-2.5 px-4 rounded transition uppercase tracking-wider shadow-lg animate-pulse"
+        >
+          CPM PREMIUM CHANNEL 2 <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+      </div>
     </div>
   );
 }
