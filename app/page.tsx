@@ -228,6 +228,47 @@ function AdsterraBannerAd() {
   );
 }
 
+// Reusable Adsterra top-left premium iframe banner (468x60) unit component
+function AdsterraTopLeftBannerAd() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !containerRef.current) return;
+
+    (window as any).atOptions = {
+      'key' : 'c502b9bc04726f078a925ebfb5588ccb',
+      'format' : 'iframe',
+      'height' : 60,
+      'width' : 468,
+      'params' : {}
+    };
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://debutpoignantsudden.com/c502b9bc04726f078a925ebfb5588ccb/invoke.js";
+
+    containerRef.current.appendChild(script);
+
+    return () => {
+      try {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      } catch (e) {}
+    };
+  }, []);
+
+  return (
+    <div className="flex flex-col items-start justify-start py-1">
+      <span className="text-[8px] font-mono text-stone-600 uppercase tracking-widest mb-0.5 font-bold">PREMIUM ADS ///</span>
+      <div 
+        ref={containerRef} 
+        className="w-[468px] h-[60px] flex items-center justify-center overflow-hidden rounded bg-[#0e0e11] border border-dashed border-stone-850 scale-90 md:scale-100 origin-top-left"
+      />
+    </div>
+  );
+}
+
 // Reusable Adsterra direct promotion banner
 function AdsterraDirectLinkAd() {
   return (
@@ -462,6 +503,16 @@ export default function Page() {
   return (
     <div className="min-h-screen flex flex-col font-sans verge-gradient-bg selection:bg-verge-magenta text-stone-100">
       
+      {/* Top Banner Spot (Adsterra top-left iframe 468x60) */}
+      <div className="bg-stone-950 border-b border-stone-900 py-2">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
+          <AdsterraTopLeftBannerAd />
+          <div className="hidden md:flex items-center text-[10px] font-mono text-stone-500 uppercase tracking-wider">
+            PREMIUM MONITOR MONETIZATION ///
+          </div>
+        </div>
+      </div>
+
       {/* 1. Header & Verge Brand Banner */}
       <header className="border-b-4 border-verge-magenta bg-stone-950 sticky top-0 z-50 shadow-md">
         {/* Dynamic status/category subheader on top (Very iconic of Verge slash structures) */}
